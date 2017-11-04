@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import { Link, hashHistory } from 'react-router';
 
 class AddSong extends Component {
   constructor(props) {
@@ -12,17 +13,20 @@ class AddSong extends Component {
     //prevent form from automatically submitting itself to the backend server.
     //HTML forms do this by default
     event.preventDefault();
-    this.props.mutate({
-      variables: {
-        title: this.state.title
-      }
-    });
+    this.props
+      .mutate({
+        variables: {
+          title: this.state.title
+        }
+      })
+      .then(() => hashHistory.push('/'));
   }
 
   render() {
     console.log(this.props);
     return (
       <div>
+        <Link to="/">Back</Link>
         <h3>Create a new song</h3>
         <form onSubmit={this.onSubmit.bind(this)}>
           <label>Song Title:</label>
