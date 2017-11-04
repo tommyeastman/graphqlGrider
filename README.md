@@ -14,3 +14,6 @@ import {graphql} from 'react-apollo'
 //execute query when component is rendered to screen
 export default graphql(query)(SongList);
 ```
+
+# React
+Need to provide a key to every item that we render in a list
