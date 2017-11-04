@@ -1,3 +1,16 @@
+#Setup
+
+Run
+```bash
+npm run dev
+```
+in terminal to launch server
+
+Navigate to http://localhost:4000 in browser to see React app.
+Navigate to http://localhost:4000/graphql to see graphiql interface.
+
+[Mongo DB database console](mlab.com)
+
 # Graph QL + React Strategy
 
 1. Identify data required
