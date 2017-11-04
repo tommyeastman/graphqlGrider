@@ -12,13 +12,15 @@ class AddSong extends Component {
     //prevent form from automatically submitting itself to the backend server.
     //HTML forms do this by default
     event.preventDefault();
-    console.log(this.state.title);
+    this.props.mutate({
+      variables: {
+        title: this.state.title
+      }
+    });
   }
 
   render() {
-    // if (this.props.data.loading) {
-    //   return <div>Loading...</div>;
-    // }
+    console.log(this.props);
     return (
       <div>
         <h3>Create a new song</h3>
@@ -35,12 +37,11 @@ class AddSong extends Component {
 }
 
 const mutation = gql`
-  mutation {
-    addSong(title: "yoo") {
-      id
+  mutation AddSong($title: String) {
+    addSong(title: $title) {
+      title
     }
   }
 `;
 
-//export default graphql(mutation)(AddSong);
-export default AddSong;
+export default graphql(mutation)(AddSong);

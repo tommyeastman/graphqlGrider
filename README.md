@@ -15,5 +15,9 @@ import {graphql} from 'react-apollo'
 export default graphql(query)(SongList);
 ```
 
+# Queries vs Mutations
+Queries give you access to props.data
+Mutations give you access to props.mutate
+
 # React
 Need to provide a key to every item that we render in a list
