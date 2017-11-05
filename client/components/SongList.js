@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
+import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Link } from 'react-router';
 import fetchSongsQuery from '../queries/fetchSongs';
 
 /**
  * SongList component
- * Query the list of songs from the database and display them on the screen as a formatted list.
+ * Query the list of songs from the database and display them on the screen as a formatted list, along with a delete icon.
+ * Allow user to delete song by clicking delete icons.
  */
 class SongList extends Component {
+  /**
+   * Run deleteSong mutation based on id.
+   * @param {id} song id passed from renderSongs() 
+   */
+  onSongDelete(id) {
+    this.props.mutate({
+      variables: { id },
+      refetchQueries: [{ query: fetchSongsQuery }]
+    });
+  }
+
   /**
    * graphql() on the export statement executes the fetch Songs query and returns the result (an array of songs) as props.
    * use .map() to place these song titles into a list.
@@ -19,6 +32,10 @@ class SongList extends Component {
       return (
         <li key={song.id} className="collection-item">
           {song.title}
+          {/*make sure to always write onClick handlers with fat arrow functions to bind them*/}
+          <i className="material-icons" onClick={() => this.onSongDelete(song.id)}>
+            delete
+          </i>
         </li>
       );
     });
@@ -43,4 +60,12 @@ class SongList extends Component {
   }
 }
 
-export default graphql(fetchSongsQuery)(SongList);
+const mutation = gql`
+  mutation DeleteSong($id: ID) {
+    deleteSong(id: $id) {
+      id
+    }
+  }
+`;
+
+export default graphql(mutation)(graphql(fetchSongsQuery)(SongList));
