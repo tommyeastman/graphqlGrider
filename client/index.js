@@ -12,6 +12,11 @@ import AddSong from './components/AddSong';
 //just use default setup for apolloclient, it knows where to look
 const client = new ApolloClient({});
 
+/**
+ * Root component is a navigator wrapped with Apollo Provider.
+ * Set App component as index route
+ * Set AddSong component as alt route
+ */
 const Root = () => {
   return (
     <ApolloProvider client={client}>
