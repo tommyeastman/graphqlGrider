@@ -34,3 +34,8 @@ Mutations give you access to props.mutate
 
 # React
 Need to provide a key to every item that we render in a list
+
+# Nav flow
+If we create a song and navigate to songlist,
+Apollo doesn't automatically refresh the list with the new song since the song list is in memory (cache).
+We need to explicitly tell Apollo to re-run the query.
