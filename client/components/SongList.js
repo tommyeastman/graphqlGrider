@@ -15,10 +15,11 @@ class SongList extends Component {
    * @param {id} song id passed from renderSongs() 
    */
   onSongDelete(id) {
-    this.props.mutate({
-      variables: { id },
-      refetchQueries: [{ query: fetchSongsQuery }]
-    });
+    this.props
+      .mutate({
+        variables: { id }
+      })
+      .then(() => this.props.data.refetch());
   }
 
   /**

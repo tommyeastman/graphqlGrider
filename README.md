@@ -39,3 +39,14 @@ Need to provide a key to every item that we render in a list
 If we create a song and navigate to songlist,
 Apollo doesn't automatically refresh the list with the new song since the song list is in memory (cache).
 We need to explicitly tell Apollo to re-run the query.
+
+# Refetching data
+If you want to refetch data not associated with the current component, need to use
+```js
+this.props.mutate({refetchQueries}) 
+```
+If you want to refetch data associated with current component, can use
+```js
+.then(()=>this.props.data.refetch())
+```
+Advantage of using this method - runs all queries associated with your component, don't have to name each query
