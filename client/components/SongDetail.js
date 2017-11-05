@@ -4,16 +4,11 @@ import { graphql } from 'react-apollo';
 import { Link } from 'react-router';
 
 class SongDetail extends Component {
-  getData(id) {
-    this.props.query({ variables: { id } });
-  }
-
   render() {
     // if (this.props.data.loading) {
     //   return <div>Loading...</div>;
     // }
-    //this.getData(this.props.params.id);
-    console.log(this.props.params.id);
+    console.log(this.props.data);
     return (
       <div>
         <h3>Song Detail page</h3>
@@ -33,5 +28,8 @@ const showSongQuery = gql`
   }
 `;
 
-//export default graphql(showSongQuery)(SongDetail);
-export default SongDetail;
+export default graphql(showSongQuery, {
+  options: props => {
+    return { variables: { id: props.params.id } };
+  }
+})(SongDetail);
