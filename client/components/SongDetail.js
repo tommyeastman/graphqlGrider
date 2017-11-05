@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Link } from 'react-router';
+import AddLyric from './AddLyric';
 
 class SongDetail extends Component {
   render() {
     if (this.props.data.loading) {
       return <div>Loading...</div>;
     }
-    console.log(this.props.data);
+    //console.log(this.props.data);
     return (
       <div>
         <Link to="/">Back</Link>
         <h3>{this.props.data.song.title}</h3>
+        <AddLyric id={this.props.params.id} />
       </div>
     );
   }
