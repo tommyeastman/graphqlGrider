@@ -2,3 +2,11 @@
   display: flex;
   justify-content: space-between;
 }
+
+.material-icons {
+  cursor: pointer;
+}
+
+.material-icons:hover {
+  color: "#d3ecff";
+}
