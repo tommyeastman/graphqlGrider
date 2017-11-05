@@ -8,7 +8,11 @@ class SongDetail extends Component {
     // if (this.props.data.loading) {
     //   return <div>Loading...</div>;
     // }
-    return <div>Song Detail page</div>;
+    return (
+      <div>
+        <h3>Song Detail page</h3>
+      </div>
+    );
   }
 }
 

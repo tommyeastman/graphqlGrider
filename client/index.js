@@ -26,7 +26,8 @@ const Root = () => {
         <Route path="/" component={App}>
           <IndexRoute component={SongList} />
           <Route path="songs/new" component={AddSong} />
-          <Route path="songs/detail" component={SongDetail} />
+          {/*Variables in React Router use :varname. SongDetail component now gets id as prop*/}
+          <Route path="songs/:id" component={SongDetail} />
         </Route>
       </Router>
     </ApolloProvider>
