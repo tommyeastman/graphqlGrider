@@ -31,13 +31,11 @@ class SongList extends Component {
     return this.props.data.songs.map(({ id, title }) => {
       return (
         <li key={id} className="collection-item">
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            {title}
-            {/*make sure to always write onClick handlers with fat arrow functions to bind them*/}
-            <i className="material-icons" onClick={() => this.onSongDelete(id)}>
-              delete
-            </i>
-          </div>
+          {title}
+          {/*make sure to always write onClick handlers with fat arrow functions to bind them*/}
+          <i className="material-icons" onClick={() => this.onSongDelete(id)}>
+            delete
+          </i>
         </li>
       );
     });

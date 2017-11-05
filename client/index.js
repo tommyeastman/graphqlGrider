@@ -5,6 +5,7 @@ import ApolloClient from 'apollo-client';
 //Apollo Provider is the glue layer between apollo and react and is a react component
 import { ApolloProvider } from 'react-apollo';
 
+import './style/style.css';
 import App from './components/App';
 import SongList from './components/SongList';
 import AddSong from './components/AddSong';
