@@ -5,13 +5,13 @@ import { Link } from 'react-router';
 
 class SongDetail extends Component {
   render() {
-    // if (this.props.data.loading) {
-    //   return <div>Loading...</div>;
-    // }
+    if (this.props.data.loading) {
+      return <div>Loading...</div>;
+    }
     console.log(this.props.data);
     return (
       <div>
-        <h3>Song Detail page</h3>
+        <h3>{this.props.data.song.title}</h3>
       </div>
     );
   }
