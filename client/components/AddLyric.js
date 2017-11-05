@@ -25,7 +25,7 @@ class AddLyric extends Component {
     event.preventDefault();
     this.props.mutate({
       variables: { songId: this.props.songId, content: this.state.lyric },
-      refetchQueries: [{ query: showSongQuery }]
+      refetchQueries: [{ query: showSongQuery, variables: { id: this.props.songId } }]
     });
     this.setState({ lyric: '' });
   }
