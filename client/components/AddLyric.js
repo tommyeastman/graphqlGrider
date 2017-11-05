@@ -23,8 +23,9 @@ class AddLyric extends Component {
     //prevent default form behavior
     event.preventDefault();
     this.props.mutate({
-      variables: { id: this.props.id, content: this.state.lyric }
+      variables: { songId: this.props.songId, content: this.state.lyric }
     });
+    this.setState({ lyric: '' });
   }
 
   /**
@@ -46,9 +47,12 @@ class AddLyric extends Component {
 }
 
 const mutation = gql`
-  mutation addLyricToSong($id: ID!, $content: String) {
-    addLyricToSong(songId: $id, content: $content) {
+  mutation addLyricToSong($songId: ID!, $content: String) {
+    addLyricToSong(songId: $songId, content: $content) {
       id
+      lyrics {
+        content
+      }
     }
   }
 `;
