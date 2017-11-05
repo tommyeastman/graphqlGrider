@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Link, hashHistory } from 'react-router';
+import showSongQuery from '../queries/showSong';
 
 /**
  * AddLyric component
@@ -23,7 +24,8 @@ class AddLyric extends Component {
     //prevent default form behavior
     event.preventDefault();
     this.props.mutate({
-      variables: { songId: this.props.songId, content: this.state.lyric }
+      variables: { songId: this.props.songId, content: this.state.lyric },
+      refetchQueries: [{ query: showSongQuery }]
     });
     this.setState({ lyric: '' });
   }

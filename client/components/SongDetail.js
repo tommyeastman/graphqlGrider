@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Link } from 'react-router';
 import AddLyric from './AddLyric';
+import showSongQuery from '../queries/showSong';
 
 class SongDetail extends Component {
   renderLyrics() {
@@ -20,7 +20,6 @@ class SongDetail extends Component {
     if (this.props.data.loading) {
       return <div>Loading...</div>;
     }
-    //console.log(this.props.data);
     return (
       <div>
         <Link to="/">Back</Link>
@@ -31,18 +30,6 @@ class SongDetail extends Component {
     );
   }
 }
-
-const showSongQuery = gql`
-  query showSong($id: ID!) {
-    song(id: $id) {
-      title
-      lyrics {
-        id
-        content
-      }
-    }
-  }
-`;
 
 /**
  * graphql() wraps the component so it intercepts the props before they go to the component
