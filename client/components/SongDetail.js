@@ -11,6 +11,7 @@ class SongDetail extends Component {
     console.log(this.props.data);
     return (
       <div>
+        <Link to="/">Back</Link>
         <h3>{this.props.data.song.title}</h3>
       </div>
     );
@@ -28,6 +29,10 @@ const showSongQuery = gql`
   }
 `;
 
+/**
+ * graphql() wraps the component so it intercepts the props before they go to the component
+ * can set query options using these props
+ */
 export default graphql(showSongQuery, {
   options: props => {
     return { variables: { id: props.params.id } };
