@@ -27,15 +27,16 @@ class SongList extends Component {
    * all React lists need a key, so use the song id for this.
    */
   renderSongs() {
-    const { songs } = this.props.data;
-    return songs.map(song => {
+    return this.props.data.songs.map(({ id, title }) => {
       return (
-        <li key={song.id} className="collection-item">
-          {song.title}
-          {/*make sure to always write onClick handlers with fat arrow functions to bind them*/}
-          <i className="material-icons" onClick={() => this.onSongDelete(song.id)}>
-            delete
-          </i>
+        <li key={id} className="collection-item">
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            {title}
+            {/*make sure to always write onClick handlers with fat arrow functions to bind them*/}
+            <i className="material-icons" onClick={() => this.onSongDelete(id)}>
+              delete
+            </i>
+          </div>
         </li>
       );
     });
