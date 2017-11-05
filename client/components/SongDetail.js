@@ -11,6 +11,7 @@ class SongDetail extends Component {
       return (
         <li key={lyric.id} className="collection-item">
           {lyric.content}
+          <i className="material-icons md-48">thumb_up</i>
         </li>
       );
     });
@@ -24,7 +25,7 @@ class SongDetail extends Component {
       <div>
         <Link to="/">Back</Link>
         <h3>{this.props.data.song.title}</h3>
-        {this.renderLyrics()}
+        <ul className="collection">{this.renderLyrics()}</ul>
         <AddLyric songId={this.props.params.id} />
       </div>
     );
