@@ -9,6 +9,7 @@ import './style/style.css';
 import App from './components/App';
 import SongList from './components/SongList';
 import AddSong from './components/AddSong';
+import SongDetail from './components/SongDetail';
 
 //just use default setup for apolloclient, it knows where to look
 const client = new ApolloClient({});
@@ -25,6 +26,7 @@ const Root = () => {
         <Route path="/" component={App}>
           <IndexRoute component={SongList} />
           <Route path="songs/new" component={AddSong} />
+          <Route path="songs/detail" component={SongDetail} />
         </Route>
       </Router>
     </ApolloProvider>
