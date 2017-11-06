@@ -6,9 +6,17 @@ import AddLyric from './AddLyric';
 import showSongQuery from '../queries/showSong';
 
 class SongDetail extends Component {
-  likeLyric(id) {
+  likeLyric(id, likes) {
     this.props.mutate({
-      variables: { id }
+      variables: { id },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        likeLyric: {
+          id,
+          __typename: 'LyricType',
+          likes: likes + 1
+        }
+      }
     });
   }
 
@@ -19,7 +27,10 @@ class SongDetail extends Component {
         <li key={lyric.id} className="collection-item">
           {lyric.content}
           <div className="vote-box">
-            <i className="material-icons md-48" onClick={() => this.likeLyric(lyric.id)}>
+            <i
+              className="material-icons md-48"
+              onClick={() => this.likeLyric(lyric.id, lyric.likes)}
+            >
               thumb_up
             </i>
             {lyric.likes}
@@ -48,7 +59,6 @@ const mutation = gql`
   mutation likeLyric($id: ID!) {
     likeLyric(id: $id) {
       id
-      content
       likes
     }
   }
