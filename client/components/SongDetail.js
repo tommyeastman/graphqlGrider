@@ -18,9 +18,12 @@ class SongDetail extends Component {
       return (
         <li key={lyric.id} className="collection-item">
           {lyric.content}
-          <i className="material-icons md-48" onClick={() => this.likeLyric(lyric.id)}>
-            thumb_up
-          </i>
+          <div className="vote-box">
+            <i className="material-icons md-48" onClick={() => this.likeLyric(lyric.id)}>
+              thumb_up
+            </i>
+            {lyric.likes}
+          </div>
         </li>
       );
     });
