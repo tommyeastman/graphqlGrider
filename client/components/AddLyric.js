@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
-import showSongQuery from '../queries/showSong';
 
 /**
  * AddLyric component
@@ -23,8 +22,7 @@ class AddLyric extends Component {
     //prevent default form behavior
     event.preventDefault();
     this.props.mutate({
-      variables: { songId: this.props.songId, content: this.state.lyric },
-      refetchQueries: [{ query: showSongQuery, variables: { id: this.props.songId } }]
+      variables: { songId: this.props.songId, content: this.state.lyric }
     });
     this.setState({ lyric: '' });
   }
@@ -52,6 +50,7 @@ const mutation = gql`
     addLyricToSong(songId: $songId, content: $content) {
       id
       lyrics {
+        id
         content
       }
     }

@@ -11,8 +11,11 @@ import SongList from './components/SongList';
 import AddSong from './components/AddSong';
 import SongDetail from './components/SongDetail';
 
-//just use default setup for apolloclient, it knows where to look
-const client = new ApolloClient({});
+//take every piece of data that is fetched by Apollo Client from the backend.
+//used to identify the data inside the Apollo Store/Client
+const client = new ApolloClient({
+  dataIdFromObject: o => o.id
+});
 
 /**
  * Root component is a navigator wrapped with Apollo Provider.

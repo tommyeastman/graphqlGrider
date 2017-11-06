@@ -50,3 +50,12 @@ If you want to refetch data associated with current component, can use
 .then(()=>this.props.data.refetch())
 ```
 Advantage of using this method - runs all queries associated with your component, don't have to name each query
+
+# Keeping track of IDs
+Set option in Apollo Client to keep track of IDs.
+Anytime an ID relevant to the component changes, the component will refresh.
+```js
+const client = new ApolloClient({
+  dataIdFromObject: o => o.id
+});
+```
