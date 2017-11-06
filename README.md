@@ -59,3 +59,4 @@ const client = new ApolloClient({
   dataIdFromObject: o => o.id
 });
 ```
+[see more in documentation here](https://www.apollographql.com/docs/react/features/caching.html)
